@@ -6,4 +6,8 @@ abstract class Styles {
     fontWeight: FontWeight.w600,
     fontSize: 17,
   );
+  static TextStyle titleHeader = const TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+  );
 }

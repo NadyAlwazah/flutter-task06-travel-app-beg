@@ -7,6 +7,10 @@ class SigninView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(appBar: CustomAppBar(), body: SigninViewBody());
+    return const Scaffold(
+      backgroundColor: Colors.white,
+      appBar: CustomAppBar(),
+      body: SigninViewBody(),
+    );
   }
 }
