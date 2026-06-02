@@ -23,16 +23,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.white,
       elevation: 0,
 
-      //leading
-      leading: Container(
-        margin: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          color: const Color(0xFFF7F7F9),
-        ),
-        child: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
-          onPressed: onTapLeading ?? () => context.pop(),
+      // leading
+      leading: Padding(
+        padding: const EdgeInsets.only(left: 16.0),
+        child: CircleAvatar(
+          backgroundColor: const Color(0xFFF7F7F9),
+          radius: 25,
+
+          child: GestureDetector(
+            onTap: onTapLeading ?? () => context.pop(),
+            child: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+          ),
         ),
       ),
       centerTitle: true,
