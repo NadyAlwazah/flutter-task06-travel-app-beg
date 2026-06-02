@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task06_travel_app_beg/core/utils/validators.dart';
 import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/auth_header.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/custom_text_form_field.dart';
@@ -16,6 +17,16 @@ class SigninViewBody extends StatefulWidget {
 class _SigninViewBodyState extends State<SigninViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,16 +43,20 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               ),
 
               const SizedBox(height: 32),
-              const CustomTextFormField(
+              CustomTextFormField(
+                controller: emailController,
                 hintText: "Email",
                 textInputType: TextInputType.emailAddress,
+                validator: Validators.validateEmail,
               ),
 
               const SizedBox(height: 24),
-              const CustomTextFormField(
+              CustomTextFormField(
+                controller: passwordController,
                 hintText: "Password ",
                 textInputType: TextInputType.text,
                 obscureText: true,
+                validator: Validators.validatePassword,
               ),
 
               const SizedBox(height: 5),
