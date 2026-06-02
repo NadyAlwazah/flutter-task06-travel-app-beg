@@ -15,4 +15,9 @@ abstract class Styles {
     fontWeight: FontWeight.w500,
     color: AppColors.primary,
   );
+  static const TextStyle buttonText = TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.w600,
+    fontSize: 17,
+  );
 }

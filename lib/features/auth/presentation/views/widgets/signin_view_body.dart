@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/auth_header.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/forget_password_text.dart';
@@ -20,29 +21,32 @@ class _SigninViewBodyState extends State<SigninViewBody> {
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,
-          child: const Column(
+          child: Column(
             children: [
-              SizedBox(height: 32),
-              AuthHeader(
+              const SizedBox(height: 32),
+              const AuthHeader(
                 title: 'Sign in now',
                 subtitle: 'Please sign in to continue our app',
               ),
 
-              SizedBox(height: 32),
-              CustomTextFormField(
+              const SizedBox(height: 32),
+              const CustomTextFormField(
                 hintText: "Email",
                 textInputType: TextInputType.emailAddress,
               ),
 
-              SizedBox(height: 24),
-              CustomTextFormField(
+              const SizedBox(height: 24),
+              const CustomTextFormField(
                 hintText: "Password ",
                 textInputType: TextInputType.text,
                 obscureText: true,
               ),
 
-              SizedBox(height: 5),
-              ForgetPasswordText(),
+              const SizedBox(height: 5),
+              const ForgetPasswordText(),
+
+              const SizedBox(height: 32),
+              CustomButton(text: "Sign in", onPressed: () {}),
             ],
           ),
         ),
