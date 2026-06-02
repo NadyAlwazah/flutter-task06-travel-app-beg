@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task06_travel_app_beg/core/app/routes.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/styles.dart';
 
 class DonotHaveAnAccountWidget extends StatelessWidget {
-  final VoidCallback? onSignupTap;
-
-  const DonotHaveAnAccountWidget({super.key, this.onSignupTap});
+  const DonotHaveAnAccountWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,9 @@ class DonotHaveAnAccountWidget extends StatelessWidget {
           style: TextStyle(color: Colors.grey),
         ),
         GestureDetector(
-          onTap: onSignupTap,
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kSignup);
+          },
           child: const Text("Sign up", style: Styles.authAction),
         ),
       ],
