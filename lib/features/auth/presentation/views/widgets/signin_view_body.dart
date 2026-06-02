@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/auth_header.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/custom_text_form_field.dart';
+import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/forget_password_text.dart';
 
 class SigninViewBody extends StatefulWidget {
   const SigninViewBody({super.key});
@@ -39,6 +40,9 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 textInputType: TextInputType.text,
                 obscureText: true,
               ),
+
+              SizedBox(height: 5),
+              ForgetPasswordText(),
             ],
           ),
         ),
