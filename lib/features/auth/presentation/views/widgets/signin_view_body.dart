@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/auth_header.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/custom_text_form_field.dart';
+import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/donot_have_an_account_widget.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/forget_password_text.dart';
 
 class SigninViewBody extends StatefulWidget {
@@ -47,6 +48,12 @@ class _SigninViewBodyState extends State<SigninViewBody> {
 
               const SizedBox(height: 32),
               CustomButton(text: "Sign in", onPressed: () {}),
+
+              const SizedBox(height: 32),
+              const DonotHaveAnAccountWidget(),
+
+              const SizedBox(height: 16),
+              const Text("Or connect", style: TextStyle(color: Colors.grey)),
             ],
           ),
         ),
