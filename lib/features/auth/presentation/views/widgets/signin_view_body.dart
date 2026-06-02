@@ -4,6 +4,7 @@ import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/w
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/donot_have_an_account_widget.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/forget_password_text.dart';
+import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/social_icons_row.dart';
 
 class SigninViewBody extends StatefulWidget {
   const SigninViewBody({super.key});
@@ -24,7 +25,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
           key: _formKey,
           child: Column(
             children: [
-              const SizedBox(height: 32),
+              const SizedBox(height: 40),
               const AuthHeader(
                 title: 'Sign in now',
                 subtitle: 'Please sign in to continue our app',
@@ -54,6 +55,9 @@ class _SigninViewBodyState extends State<SigninViewBody> {
 
               const SizedBox(height: 16),
               const Text("Or connect", style: TextStyle(color: Colors.grey)),
+
+              const SizedBox(height: 84),
+              const SocialIconsRow(),
             ],
           ),
         ),

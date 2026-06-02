@@ -6,6 +6,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final Widget? action;
   final VoidCallback? onTapAction;
+  final VoidCallback? onTapLeading;
   final bool isActionIcon;
   const CustomAppBar({
     super.key,
@@ -13,6 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.action,
     this.onTapAction,
     this.isActionIcon = true,
+    this.onTapLeading,
   });
 
   @override
@@ -30,7 +32,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         child: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
-          onPressed: () => context.pop(),
+          onPressed: onTapLeading ?? () => context.pop(),
         ),
       ),
       centerTitle: true,
