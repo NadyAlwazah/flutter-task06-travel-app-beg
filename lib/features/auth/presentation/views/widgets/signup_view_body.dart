@@ -63,6 +63,15 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 obscureText: true,
                 validator: Validators.validatePassword,
               ),
+
+              const SizedBox(height: 12),
+              const Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "Password must be 8 charactar",
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ),
             ],
           ),
         ),
