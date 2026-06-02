@@ -1,4 +1,14 @@
 class Validators {
+  static String? validateFullName(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return "Name is required";
+    }
+    if (value.trim().length < 2) {
+      return "Name is too short";
+    }
+    return null;
+  }
+
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return "Email is required";
