@@ -63,7 +63,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               const ForgetPasswordText(),
 
               const SizedBox(height: 32),
-              CustomButton(text: "Sign in", onPressed: () {}),
+              CustomButton(text: "Sign In", onPressed: () {}),
 
               const SizedBox(height: 32),
               const DonotHaveAnAccountWidget(),

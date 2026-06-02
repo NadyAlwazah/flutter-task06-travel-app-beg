@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task06_travel_app_beg/core/utils/validators.dart';
+import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/auth_header.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/custom_text_form_field.dart';
 
@@ -72,6 +73,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                   style: TextStyle(color: Colors.grey),
                 ),
               ),
+              const SizedBox(height: 40),
+              CustomButton(text: "Sign Up", onPressed: () {}),
             ],
           ),
         ),
