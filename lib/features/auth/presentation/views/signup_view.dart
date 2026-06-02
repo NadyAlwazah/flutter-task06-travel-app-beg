@@ -7,6 +7,10 @@ class SignupView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(appBar: CustomAppBar(), body: SignupViewBody());
+    return const Scaffold(
+      backgroundColor: Colors.white,
+      appBar: CustomAppBar(),
+      body: SignupViewBody(),
+    );
   }
 }
