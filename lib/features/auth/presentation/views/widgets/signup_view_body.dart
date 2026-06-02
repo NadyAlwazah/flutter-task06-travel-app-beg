@@ -4,6 +4,7 @@ import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/auth_header.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/have_an_account_widget.dart';
+import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/social_icons_row.dart';
 
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
@@ -79,6 +80,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
 
               const SizedBox(height: 32),
               const HaveAnAccountWidget(),
+
+              const SizedBox(height: 16),
+              const Text("Or connect", style: TextStyle(color: Colors.grey)),
+
+              const SizedBox(height: 42),
+              const SocialIconsRow(),
             ],
           ),
         ),
