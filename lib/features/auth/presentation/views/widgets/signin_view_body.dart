@@ -71,7 +71,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               const SizedBox(height: 16),
               const Text("Or connect", style: TextStyle(color: Colors.grey)),
 
-              const SizedBox(height: 84),
+              const SizedBox(height: 130),
               const SocialIconsRow(),
             ],
           ),

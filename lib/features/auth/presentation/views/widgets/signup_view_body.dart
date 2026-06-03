@@ -50,7 +50,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 textInputType: TextInputType.text,
                 validator: Validators.validateFullName,
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 24),
               CustomTextFormField(
                 controller: emailController,
                 hintText: "Email",
