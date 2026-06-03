@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task06_travel_app_beg/core/app/routes.dart';
 import 'package:flutter_task06_travel_app_beg/core/utils/validators.dart';
 import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/auth_header.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/w
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/donot_have_an_account_widget.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/forget_password_text.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/social_icons_row.dart';
+import 'package:go_router/go_router.dart';
 
 class SigninViewBody extends StatefulWidget {
   const SigninViewBody({super.key});
@@ -63,7 +65,13 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               const ForgetPasswordText(),
 
               const SizedBox(height: 32),
-              CustomButton(text: "Sign In", onPressed: () {}),
+              CustomButton(
+                text: "Sign In",
+                onPressed: () {
+                  //!!!
+                  context.go(AppRouter.kBottomBar);
+                },
+              ),
 
               const SizedBox(height: 32),
               const DonotHaveAnAccountWidget(),
