@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task06_travel_app_beg/core/widgets/custom_app_bar.dart';
+import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -20,6 +21,9 @@ class HomeView extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
           ),
         ),
+
+        // Body
+        Expanded(child: HomeViewBody()),
       ],
     );
   }

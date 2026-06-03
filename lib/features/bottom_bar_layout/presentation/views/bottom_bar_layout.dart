@@ -58,7 +58,7 @@ class _BottomBarLayoutState extends State<BottomBarLayout> {
 
           //Profile
           SalomonBottomBarItem(
-            icon: const Icon(Icons.person_2_outlined),
+            icon: const Icon(Icons.person_outline),
             title: const Text("Profile"),
             selectedColor: Colors.orange,
           ),
