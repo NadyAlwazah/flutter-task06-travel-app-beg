@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/add_place_form_fields.dart';
 
 class AddPlaceBottomSheet extends StatefulWidget {
@@ -74,23 +75,8 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
                 priceController: priceController,
               ),
 
-              // Submit Button
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: const Text(
-                    "Add Place",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
+              const SizedBox(height: 12),
+              CustomButton(text: "Add Place", onPressed: () {}),
             ],
           ),
         ),
