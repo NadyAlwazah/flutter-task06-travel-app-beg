@@ -30,6 +30,14 @@ class _BottomBarLayoutState extends State<BottomBarLayout> {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: _buildScreens()[currentIndex],
+      floatingActionButton: currentIndex == 0
+          ? FloatingActionButton(
+              onPressed: () {},
+              backgroundColor: Colors.purple,
+              child: const Icon(Icons.add, color: Colors.white),
+            )
+          : null,
+
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: currentIndex,
         onTap: (index) => setState(() => currentIndex = index),
