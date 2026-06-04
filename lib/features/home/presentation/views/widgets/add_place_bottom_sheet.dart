@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/custom_text_field.dart';
+import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/add_place_form_fields.dart';
 
 class AddPlaceBottomSheet extends StatefulWidget {
   const AddPlaceBottomSheet({super.key});
@@ -67,33 +67,12 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
 
               const SizedBox(height: 16),
 
-              // Title Field
-              CustomTextField(
-                controller: titleController,
-                label: "Place Title",
+              AddPlaceFormFields(
+                titleController: titleController,
+                addressController: addressController,
+                ratingController: ratingdController,
+                priceController: priceController,
               ),
-              //ِAddress Field
-              const SizedBox(height: 12),
-              CustomTextField(
-                controller: addressController,
-                label: "Place Address",
-              ),
-              //Rating Field
-              const SizedBox(height: 12),
-              CustomTextField(
-                controller: ratingdController,
-                label: "Rating (1 - 5)",
-                keyboardType: TextInputType.number,
-              ),
-              //Price Field
-              const SizedBox(height: 12),
-              CustomTextField(
-                controller: priceController,
-                label: "Price per person",
-                keyboardType: TextInputType.number,
-              ),
-
-              const SizedBox(height: 20),
 
               // Submit Button
               SizedBox(
