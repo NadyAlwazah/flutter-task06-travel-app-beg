@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_task06_travel_app_beg/core/theme/app_colors.dart';
 import 'package:flutter_task06_travel_app_beg/features/favorite/presentation/views/favorite_places_view.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/home_view.dart';
+import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/add_place_bottom_sheet.dart';
 import 'package:flutter_task06_travel_app_beg/features/popular_packages/presentation/views/popular_packages_view.dart';
 import 'package:flutter_task06_travel_app_beg/features/profile/presentation/views/profile_view.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -25,6 +26,24 @@ class _BottomBarLayoutState extends State<BottomBarLayout> {
     ];
   }
 
+  void _showAddBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: const AddPlaceBottomSheet(),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +51,7 @@ class _BottomBarLayoutState extends State<BottomBarLayout> {
       body: _buildScreens()[currentIndex],
       floatingActionButton: currentIndex == 0
           ? FloatingActionButton(
-              onPressed: () {},
+              onPressed: _showAddBottomSheet,
               backgroundColor: Colors.purple,
               child: const Icon(Icons.add, color: Colors.white),
             )
