@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/add_place_form_fields.dart';
+import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/add_place_image_picker.dart';
 
 class AddPlaceBottomSheet extends StatefulWidget {
   const AddPlaceBottomSheet({super.key});
@@ -46,25 +47,8 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
 
               const SizedBox(height: 16),
 
-              // Image Picker Placeholder
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 120,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.grey.shade400),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "Tap to upload image",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ),
-                ),
-              ),
+              // Image Picker
+              AddPlaceImagePicker(onTap: () {}),
 
               const SizedBox(height: 16),
 
