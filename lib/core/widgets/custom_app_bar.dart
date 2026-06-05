@@ -50,7 +50,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               onTap: onTapAction,
               child: isActionIcon
                   ? Container(
-                      margin: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         color: const Color(0xFFF7F7F9),

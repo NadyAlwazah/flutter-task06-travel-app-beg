@@ -6,4 +6,5 @@ class AssetsData {
   static const accountAvatarSvg1 = "assets/icons/account_avatar_1_svg.svg";
   static const accountAvatarSvg2 = "assets/icons/account_avatar_2_svg.svg";
   static const accountAvatarSvg3 = "assets/icons/account_avatar_3_svg.svg";
+  static const editPencilLineSvg = "assets/icons/edit_pencil_line_svg.svg";
 }
