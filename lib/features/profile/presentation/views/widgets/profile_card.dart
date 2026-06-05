@@ -21,7 +21,6 @@ class ProfileCard extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SvgPicture.asset(imagePath),
-        const SizedBox(height: 12),
         Text(
           name,
           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

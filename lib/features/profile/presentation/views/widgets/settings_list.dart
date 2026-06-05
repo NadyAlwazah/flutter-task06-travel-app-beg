@@ -13,7 +13,7 @@ class SettingsList extends StatelessWidget {
         border: Border.all(color: Colors.grey.withOpacity(0.1), width: 1),
       ),
       child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+        contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
         leading: Icon(icon, size: 22, color: Colors.grey),
         title: Text(title, style: const TextStyle(fontWeight: FontWeight.w500)),
         trailing: const Icon(

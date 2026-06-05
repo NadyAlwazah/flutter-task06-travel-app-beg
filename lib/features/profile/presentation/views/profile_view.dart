@@ -22,10 +22,8 @@ class ProfileView extends StatelessWidget {
           ),
         ),
 
-        const SizedBox(height: 32),
-
         // Body
-        const ProfileViewBody(),
+        const Expanded(child: ProfileViewBody()),
       ],
     );
   }
