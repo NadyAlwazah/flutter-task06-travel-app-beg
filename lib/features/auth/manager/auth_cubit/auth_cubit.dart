@@ -45,4 +45,11 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthError(message: e.toString()));
     }
   }
+
+  void checkAuth() {
+    final user = authServices.currentUser();
+    if (user != null) {
+      emit(const AuthLoaded());
+    }
+  }
 }

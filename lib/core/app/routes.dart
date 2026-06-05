@@ -1,5 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_task06_travel_app_beg/features/auth/manager/auth_cubit/auth_cubit.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/signin_view.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/signup_view.dart';
 import 'package:flutter_task06_travel_app_beg/features/bottom_bar_layout/presentation/views/bottom_bar_layout.dart';
@@ -13,20 +11,8 @@ abstract class AppRouter {
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashView()),
-      GoRoute(
-        path: kSignin,
-        builder: (context, state) => BlocProvider(
-          create: (context) => AuthCubit(),
-          child: const SigninView(),
-        ),
-      ),
-      GoRoute(
-        path: kSignup,
-        builder: (context, state) => BlocProvider(
-          create: (context) => AuthCubit(),
-          child: const SignupView(),
-        ),
-      ),
+      GoRoute(path: kSignin, builder: (context, state) => const SigninView()),
+      GoRoute(path: kSignup, builder: (context, state) => const SignupView()),
       GoRoute(
         path: kBottomBar,
         builder: (context, state) => const BottomBarLayout(),

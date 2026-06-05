@@ -3,14 +3,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 abstract class AuthServices {
   Future<bool> loginWithEmailAndPassword(String email, String password);
   Future<bool> registerWithEmailAndPassword(String email, String password);
+  User? currentUser();
 }
 
 class AuthServicesImpl implements AuthServices {
+  final _firebaseAuth = FirebaseAuth.instance;
   @override
   Future<bool> loginWithEmailAndPassword(String email, String password) async {
     try {
-      final userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
       return userCredential.user != null;
     } on FirebaseAuthException catch (e) {
@@ -34,8 +38,10 @@ class AuthServicesImpl implements AuthServices {
     String password,
   ) async {
     try {
-      final userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+      final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
       return userCredential.user != null;
     } on FirebaseAuthException catch (e) {
@@ -51,5 +57,10 @@ class AuthServicesImpl implements AuthServices {
     } catch (e) {
       throw "Unexpected error: $e";
     }
+  }
+
+  @override
+  User? currentUser() {
+    return _firebaseAuth.currentUser;
   }
 }
