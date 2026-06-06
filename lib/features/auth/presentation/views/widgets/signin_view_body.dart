@@ -81,10 +81,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                     ).showSnackBar(SnackBar(content: Text(state.message)));
                   }
                 },
-                buildWhen: (previous, current) =>
-                    current is AuthLoading ||
-                    current is AuthError ||
-                    current is AuthLoaded,
+                buildWhen: (previous, current) => current is AuthLoading,
                 builder: (context, state) {
                   if (state is AuthLoading) {
                     return const CustomButton(isLoading: true);
