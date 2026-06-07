@@ -4,7 +4,6 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String label;
   final TextInputType keyboardType;
-
   final String? Function(String?)? validator;
   const CustomTextField({
     super.key,
@@ -16,7 +15,8 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: validator,
       controller: controller,
       keyboardType: keyboardType,
       decoration: InputDecoration(
