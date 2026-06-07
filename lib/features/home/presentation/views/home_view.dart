@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_task06_travel_app_beg/core/widgets/custom_app_bar.dart';
+import 'package:flutter_task06_travel_app_beg/features/home/manager/home_cubit/home_cubit.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -7,24 +9,27 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        //AppBar
-        CustomAppBar(title: "Popular Places"),
+    return BlocProvider(
+      create: (context) => HomeCubit(),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //AppBar
+          CustomAppBar(title: "Popular Places"),
 
-        SizedBox(height: 16),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: Text(
-            "All Popular Places",
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+          SizedBox(height: 16),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              "All Popular Places",
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+            ),
           ),
-        ),
 
-        // Body
-        Expanded(child: HomeViewBody()),
-      ],
+          // Body
+          Expanded(child: HomeViewBody()),
+        ],
+      ),
     );
   }
 }
