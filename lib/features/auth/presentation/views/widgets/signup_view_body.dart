@@ -111,6 +111,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                         await cubit.registerWithEmailAndPassword(
                           emailController.text,
                           passwordController.text,
+                          fullNameController.text,
                         );
                       }
                     },
