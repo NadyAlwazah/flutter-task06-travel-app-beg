@@ -16,6 +16,25 @@ class PlaceModel {
     required this.price,
     this.isFavorite = false,
   });
+  PlaceModel copyWith({
+    String? id,
+    String? imageUrl,
+    String? title,
+    String? location,
+    double? rating,
+    double? price,
+    bool? isFavorite,
+  }) {
+    return PlaceModel(
+      id: id ?? this.id,
+      imageUrl: imageUrl ?? this.imageUrl,
+      title: title ?? this.title,
+      location: location ?? this.location,
+      rating: rating ?? this.rating,
+      price: price ?? this.price,
+      isFavorite: isFavorite ?? this.isFavorite,
+    );
+  }
 
   Map<String, dynamic> toMap() {
     return {
@@ -24,7 +43,7 @@ class PlaceModel {
       'location': location,
       'rating': rating,
       'price': price,
-      "isFavorite": isFavorite,
+      // "isFavorite": isFavorite,
     };
   }
 
@@ -36,7 +55,7 @@ class PlaceModel {
       location: map['location'] ?? '',
       rating: (map['rating'] as num).toDouble(),
       price: (map['price'] as num).toDouble(),
-      isFavorite: map['isFavorite'],
+      // isFavorite: map['isFavorite'],
     );
   }
 }

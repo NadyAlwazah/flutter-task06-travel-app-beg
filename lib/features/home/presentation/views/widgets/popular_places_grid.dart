@@ -49,13 +49,7 @@ class PopularPlacesGrid extends StatelessWidget {
           itemCount: places.length,
           itemBuilder: (context, index) {
             final place = places[index];
-            return PopularPlaceCard(
-              imagePath: "assets/images/Copilot_20260604_000453.png",
-              title: place.title,
-              location: place.location,
-              rating: place.rating,
-              price: place.price,
-            );
+            return PopularPlaceCard(placeModel: place);
           },
         );
       },

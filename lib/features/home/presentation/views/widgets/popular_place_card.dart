@@ -1,28 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_task06_travel_app_beg/core/models/place_model.dart';
 import 'package:flutter_task06_travel_app_beg/core/theme/app_colors.dart';
+import 'package:flutter_task06_travel_app_beg/features/home/manager/home_cubit/home_cubit.dart';
 
 class PopularPlaceCard extends StatelessWidget {
-  final String imagePath;
-  final String title;
-  final String location;
-  final double rating;
-  final double price;
-  final VoidCallback? onFavoriteTap;
+  final PlaceModel placeModel;
 
-  const PopularPlaceCard({
-    super.key,
-    required this.imagePath,
-    required this.title,
-    required this.location,
-    required this.rating,
-    required this.price,
-    this.onFavoriteTap,
-  });
+  const PopularPlaceCard({super.key, required this.placeModel});
 
   @override
   Widget build(BuildContext context) {
     final widthScrren = MediaQuery.of(context).size.width;
-
+    final homeCubit = HomeCubit();
     return Container(
       width: widthScrren * 0.42,
       decoration: BoxDecoration(
@@ -45,7 +36,8 @@ class PopularPlaceCard extends StatelessWidget {
                 ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(16)),
                   child: Image.asset(
-                    imagePath,
+                    "assets/images/Copilot_20260604_000453.png",
+                    //! placeModel.imageUrl,
                     height: widthScrren * 0.30,
                     width: widthScrren * 0.42,
                     fit: BoxFit.cover,
@@ -54,17 +46,66 @@ class PopularPlaceCard extends StatelessWidget {
                 Positioned(
                   top: 8,
                   right: 8,
-                  child: GestureDetector(
-                    onTap: onFavoriteTap,
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.black12,
-                      radius: 14,
-                      child: Icon(
-                        Icons.favorite_border,
-                        color: Colors.white,
-                        size: 15,
-                      ),
-                    ),
+                  child: BlocBuilder<HomeCubit, HomeState>(
+                    bloc: homeCubit,
+                    buildWhen: (previous, current) =>
+                        current is SetFavoriteLoading ||
+                        current is SetFavoriteSuccess ||
+                        current is SetFavoriteError,
+                    builder: (context, state) {
+                      if (state is SetFavoriteLoading) {
+                        return const CupertinoActivityIndicator(
+                          color: Colors.red,
+                        );
+                      } else if (state is SetFavoriteSuccess) {
+                        return state.isFavorite
+                            ? GestureDetector(
+                                onTap: () async =>
+                                    await homeCubit.setFavorite(placeModel),
+                                child: const CircleAvatar(
+                                  backgroundColor: Colors.black12,
+                                  radius: 14,
+                                  child: Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                    size: 15,
+                                  ),
+                                ),
+                              )
+                            : GestureDetector(
+                                onTap: () async =>
+                                    await homeCubit.setFavorite(placeModel),
+                                child: const CircleAvatar(
+                                  backgroundColor: Colors.black12,
+                                  radius: 14,
+                                  child: Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.white,
+                                    size: 15,
+                                  ),
+                                ),
+                              );
+                      }
+                      return GestureDetector(
+                        onTap: () async =>
+                            await homeCubit.setFavorite(placeModel),
+                        child: CircleAvatar(
+                          backgroundColor: Colors.black12,
+                          radius: 14,
+                          child: placeModel.isFavorite
+                              ? const Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                  size: 15,
+                                )
+                              : const Icon(
+                                  Icons.favorite_border,
+                                  color: Colors.white,
+                                  size: 15,
+                                ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
@@ -72,7 +113,7 @@ class PopularPlaceCard extends StatelessWidget {
 
             const SizedBox(height: 8),
             Text(
-              title,
+              placeModel.title,
               style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
             ),
 
@@ -82,7 +123,7 @@ class PopularPlaceCard extends StatelessWidget {
                 const Icon(Icons.location_on_outlined, size: 17),
 
                 Text(
-                  location,
+                  placeModel.location,
                   style: const TextStyle(color: Colors.grey, fontSize: 12),
                 ),
               ],
@@ -97,7 +138,7 @@ class PopularPlaceCard extends StatelessWidget {
 
                 const SizedBox(width: 2),
                 Text(
-                  rating.toString(),
+                  placeModel.rating.toString(),
                   style: const TextStyle(fontWeight: FontWeight.w500),
                 ),
               ],
@@ -108,7 +149,7 @@ class PopularPlaceCard extends StatelessWidget {
               TextSpan(
                 children: [
                   TextSpan(
-                    text: '\$${price.toInt()}/',
+                    text: '\$${placeModel.price.toInt()}/',
                     style: const TextStyle(
                       color: AppColors.primary,
                       fontWeight: FontWeight.w600,
