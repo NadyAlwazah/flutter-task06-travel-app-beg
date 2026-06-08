@@ -9,9 +9,9 @@ class UserModel {
     return <String, dynamic>{'id': id, 'fullName': fullName, 'email': email};
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
+  factory UserModel.fromMap(Map<String, dynamic> map, String userId) {
     return UserModel(
-      id: map['id'] as String,
+      id: userId,
       fullName: map['fullName'] as String,
       email: map['email'] as String,
     );

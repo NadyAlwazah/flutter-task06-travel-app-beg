@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_task06_travel_app_beg/core/models/user_model.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/auth_services.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/firestore_services.dart';
@@ -65,7 +65,7 @@ class AuthCubit extends Cubit<AuthState> {
       email: email,
     );
     await firestoreServices.setData(
-      path: ApiPaths.users(userModel.id),
+      path: ApiPaths.user(userModel.id),
       data: userModel.toMap(),
     );
   }
