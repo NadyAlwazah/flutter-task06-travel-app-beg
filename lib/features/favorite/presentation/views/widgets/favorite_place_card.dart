@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_task06_travel_app_beg/core/models/place_model.dart';
+import 'package:flutter_task06_travel_app_beg/features/favorite/manager/favorite_cubit/favorite_cubit.dart';
 
 class FavoritePlaceCard extends StatelessWidget {
-  final String imagePath;
-  final String title;
-  final String location;
-  final VoidCallback? onFavoriteTap;
-  const FavoritePlaceCard({
-    super.key,
-    required this.imagePath,
-    required this.title,
-    required this.location,
+  final PlaceModel placeModel;
 
-    this.onFavoriteTap,
-  });
+  const FavoritePlaceCard({super.key, required this.placeModel});
 
   @override
   Widget build(BuildContext context) {
     final widthScrren = MediaQuery.of(context).size.width;
-
+    final favoriteCubit = context.read<FavoriteCubit>();
     return Container(
       width: widthScrren * 0.42,
       decoration: BoxDecoration(
@@ -40,7 +34,8 @@ class FavoritePlaceCard extends StatelessWidget {
                 ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(16)),
                   child: Image.asset(
-                    imagePath,
+                    "assets/images/Copilot_20260604_000453.png",
+                    //!  placeModel.imageUrl,
                     height: widthScrren * 0.30,
                     width: widthScrren * 0.42,
                     fit: BoxFit.cover,
@@ -50,7 +45,9 @@ class FavoritePlaceCard extends StatelessWidget {
                   top: 8,
                   right: 8,
                   child: GestureDetector(
-                    onTap: onFavoriteTap,
+                    onTap: () async {
+                      await favoriteCubit.removeFavorite(placeModel.id);
+                    },
                     child: const CircleAvatar(
                       backgroundColor: Colors.black12,
                       radius: 14,
@@ -63,7 +60,7 @@ class FavoritePlaceCard extends StatelessWidget {
 
             const SizedBox(height: 8),
             Text(
-              title,
+              placeModel.title,
               style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
             ),
 
@@ -73,7 +70,7 @@ class FavoritePlaceCard extends StatelessWidget {
                 const Icon(Icons.location_on_outlined, size: 17),
 
                 Text(
-                  location,
+                  placeModel.location,
                   style: const TextStyle(color: Colors.grey, fontSize: 12),
                 ),
               ],

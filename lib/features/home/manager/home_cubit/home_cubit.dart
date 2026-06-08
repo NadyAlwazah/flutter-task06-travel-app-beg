@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_task06_travel_app_beg/core/models/place_model.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/auth_services.dart';
+import 'package:flutter_task06_travel_app_beg/core/services/favorite_services.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/home_services.dart';
 import 'package:meta/meta.dart';
 
@@ -11,12 +12,13 @@ class HomeCubit extends Cubit<HomeState> {
 
   final homeServices = HomeServicesImpl();
   final authServices = AuthServicesImpl();
+  final favoriteServices = FavoriteServicesImp();
 
   Future<List<PlaceModel>> getPlaces() async {
     try {
       final places = await homeServices.fetchPlaces();
       final currentUser = authServices.currentUser();
-      final favoritePlaces = await homeServices.fetchFavoritePlaces(
+      final favoritePlaces = await favoriteServices.fetchFavoritePlaces(
         currentUser!.uid,
       );
       final List<PlaceModel> finalPlaces = places.map((place) {
@@ -34,17 +36,17 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       final currentUser = authServices.currentUser();
 
-      final favoritePlaces = await homeServices.fetchFavoritePlaces(
+      final favoritePlaces = await favoriteServices.fetchFavoritePlaces(
         currentUser!.uid,
       );
       final isFavorite = favoritePlaces.any((item) => item.id == place.id);
       if (isFavorite) {
-        await homeServices.removeFavoritePlace(
+        await favoriteServices.removeFavoritePlace(
           userId: currentUser.uid,
           placeId: place.id,
         );
       } else {
-        await homeServices.addFavoritePlace(
+        await favoriteServices.addFavoritePlace(
           userId: currentUser.uid,
           place: place,
         );

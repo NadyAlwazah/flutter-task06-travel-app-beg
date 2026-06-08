@@ -32,7 +32,13 @@ class PopularPlacesGrid extends StatelessWidget {
         }
 
         if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return const Center(child: Text("No places found"));
+          return Align(
+            alignment: Alignment.center,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.7,
+              child: const Text("No places found"),
+            ),
+          );
         }
 
         final places = snapshot.data!;
