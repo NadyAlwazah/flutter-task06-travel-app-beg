@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,10 +26,14 @@ class ProfileViewBody extends StatelessWidget {
           stream: profileServices.fetchUserDataStream(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 40),
-                  child: CircularProgressIndicator(),
+              return Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  child: const CupertinoActivityIndicator(
+                    radius: 15,
+                    color: Colors.orange,
+                  ),
                 ),
               );
             }
