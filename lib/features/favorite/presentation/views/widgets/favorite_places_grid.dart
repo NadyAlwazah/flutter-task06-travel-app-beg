@@ -47,17 +47,10 @@ class FavoritePlacesGrid extends StatelessWidget {
             mainAxisSpacing: 15,
             childAspectRatio: 0.90,
           ),
-          // shrinkWrap: true,
-          // physics: const NeverScrollableScrollPhysics(),
           itemCount: favoritePlaces.length,
           itemBuilder: (context, index) {
             final place = favoritePlaces[index];
-            return FavoritePlaceCard(
-              placeModel: place,
-              // imagePath: "assets/images/Copilot_20260604_000453.png",
-              // title: "Aonang Villa Resort",
-              // location: "afdasdf",
-            );
+            return FavoritePlaceCard(placeModel: place);
           },
         );
       },

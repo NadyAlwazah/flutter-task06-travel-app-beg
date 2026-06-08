@@ -11,8 +11,8 @@ class PopularPlacesGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<HomeCubit>();
-    return FutureBuilder<List<PlaceModel>>(
-      future: cubit.getPlaces(),
+    return StreamBuilder<List<PlaceModel>>(
+      stream: cubit.getPlacesStream(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Align(
@@ -32,11 +32,10 @@ class PopularPlacesGrid extends StatelessWidget {
         }
 
         if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return Align(
-            alignment: Alignment.center,
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.7,
-              child: const Text("No places found"),
+          return const Center(
+            child: Text(
+              "No places found",
+              style: TextStyle(color: Colors.grey),
             ),
           );
         }
@@ -50,8 +49,6 @@ class PopularPlacesGrid extends StatelessWidget {
             mainAxisSpacing: 15,
             childAspectRatio: 0.70,
           ),
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
           itemCount: places.length,
           itemBuilder: (context, index) {
             final place = places[index];

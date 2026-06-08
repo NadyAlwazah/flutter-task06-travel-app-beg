@@ -8,9 +8,7 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.0),
-      child: SingleChildScrollView(
-        child: Column(children: [PopularPlacesGrid(), SizedBox(height: 16)]),
-      ),
+      child: Column(children: [Expanded(child: PopularPlacesGrid())]),
     );
   }
 }
