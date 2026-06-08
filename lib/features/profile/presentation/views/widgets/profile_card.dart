@@ -30,7 +30,11 @@ class ProfileCard extends StatelessWidget {
           subTitle,
           style: isEmail
               ? const TextStyle(color: Colors.grey)
-              : const TextStyle(fontSize: 16, color: AppColors.primary),
+              : const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.primary,
+                ),
         ),
       ],
     );

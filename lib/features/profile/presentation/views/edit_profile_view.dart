@@ -10,6 +10,7 @@ class EditProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       appBar: CustomAppBar(
         onTapLeading: () => context.pop(),
         title: "Edit Profile",
