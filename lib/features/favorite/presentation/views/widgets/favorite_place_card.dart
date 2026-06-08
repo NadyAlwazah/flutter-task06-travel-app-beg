@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_task06_travel_app_beg/core/models/place_model.dart';
-import 'package:flutter_task06_travel_app_beg/features/favorite/manager/favorite_cubit/favorite_cubit.dart';
+import 'package:flutter_task06_travel_app_beg/core/services/favorite_services.dart';
 
 class FavoritePlaceCard extends StatelessWidget {
   final PlaceModel placeModel;
@@ -11,7 +10,7 @@ class FavoritePlaceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final widthScrren = MediaQuery.of(context).size.width;
-    final favoriteCubit = context.read<FavoriteCubit>();
+    final favoriteServices = FavoriteServicesImp();
     return Container(
       width: widthScrren * 0.42,
       decoration: BoxDecoration(
@@ -46,7 +45,9 @@ class FavoritePlaceCard extends StatelessWidget {
                   right: 8,
                   child: GestureDetector(
                     onTap: () async {
-                      await favoriteCubit.removeFavorite(placeModel.id);
+                      await favoriteServices.removeFavoritePlaceUser(
+                        placeModel.id,
+                      );
                     },
                     child: const CircleAvatar(
                       backgroundColor: Colors.black12,

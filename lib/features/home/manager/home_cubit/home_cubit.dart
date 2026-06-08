@@ -46,10 +46,7 @@ class HomeCubit extends Cubit<HomeState> {
       );
       final isFavorite = favoritePlaces.any((item) => item.id == place.id);
       if (isFavorite) {
-        await favoriteServices.removeFavoritePlace(
-          userId: currentUser.uid,
-          placeId: place.id,
-        );
+        await favoriteServices.removeFavoritePlaceUser(place.id);
       } else {
         await favoriteServices.addFavoritePlace(
           userId: currentUser.uid,

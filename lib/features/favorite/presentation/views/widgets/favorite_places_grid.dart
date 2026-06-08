@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_task06_travel_app_beg/features/favorite/manager/favorite_cubit/favorite_cubit.dart';
+import 'package:flutter_task06_travel_app_beg/core/services/favorite_services.dart';
 import 'package:flutter_task06_travel_app_beg/features/favorite/presentation/views/widgets/favorite_place_card.dart';
 
 class FavoritePlacesGrid extends StatelessWidget {
@@ -9,9 +8,9 @@ class FavoritePlacesGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<FavoriteCubit>();
+    final favoriteServices = FavoriteServicesImp();
     return StreamBuilder(
-      stream: cubit.getFavoritesPlacesStream(),
+      stream: favoriteServices.getFavoritesPlacesUserStream(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return const Text('Something went wrong');
