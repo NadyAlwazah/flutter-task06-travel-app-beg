@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_task06_travel_app_beg/core/models/place_model.dart';
-import 'package:flutter_task06_travel_app_beg/features/home/manager/home_cubit/home_cubit.dart';
+import 'package:flutter_task06_travel_app_beg/core/services/home_services.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/popular_place_card.dart';
 
 class PopularPlacesGrid extends StatelessWidget {
@@ -10,9 +9,9 @@ class PopularPlacesGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<HomeCubit>();
+    final homeServices = HomeServicesImpl();
     return StreamBuilder<List<PlaceModel>>(
-      stream: cubit.getPlacesStream(),
+      stream: homeServices.getPlacesStream(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Align(
