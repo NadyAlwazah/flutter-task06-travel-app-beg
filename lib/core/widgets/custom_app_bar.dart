@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task06_travel_app_beg/core/utils/styles.dart';
-import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -31,7 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           radius: 25,
 
           child: GestureDetector(
-            onTap: onTapLeading ?? () => context.pop(),
+            onTap: onTapLeading,
             child: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
           ),
         ),

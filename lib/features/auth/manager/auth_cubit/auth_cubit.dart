@@ -59,10 +59,17 @@ class AuthCubit extends Cubit<AuthState> {
     required String email,
   }) async {
     final currentUser = authServices.currentUser();
+    final parts = fullName.trim().split(' ');
+    final first = parts.isNotEmpty ? parts.first : '';
+    final last = parts.length > 1 ? parts.sublist(1).join(' ') : '';
     final userModel = UserModel(
       id: currentUser!.uid,
       fullName: fullName,
+      firstName: first,
+      lastName: last,
       email: email,
+      location: null,
+      phoneNumber: null,
     );
     await firestoreServices.setData(
       path: ApiPaths.user(userModel.id),

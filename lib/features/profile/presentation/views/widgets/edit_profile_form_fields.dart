@@ -27,6 +27,7 @@ class EditProfileFormFields extends StatelessWidget {
           controller: firstNameController,
           textInputType: TextInputType.text,
           validator: Validators.validateFullName,
+          hintText: "Enter your first name",
         ),
         const SizedBox(height: 16),
 
@@ -36,6 +37,7 @@ class EditProfileFormFields extends StatelessWidget {
           controller: lastNameController,
           textInputType: TextInputType.text,
           validator: Validators.validateFullName,
+          hintText: "Enter your last name",
         ),
         const SizedBox(height: 16),
 
@@ -45,6 +47,7 @@ class EditProfileFormFields extends StatelessWidget {
           controller: locationController,
           textInputType: TextInputType.text,
           validator: Validators.validateField,
+          hintText: "Enter your location",
         ),
         const SizedBox(height: 16),
 
