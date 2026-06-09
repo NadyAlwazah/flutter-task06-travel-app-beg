@@ -22,6 +22,9 @@ class EditProfileView extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
+        onTapAction: () {
+          EditProfileViewBody.onSaveCallback?.call();
+        },
       ),
       body: const EditProfileViewBody(),
     );

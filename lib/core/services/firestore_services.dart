@@ -16,7 +16,7 @@ class FirestoreServices {
   }) async {
     final reference = firestore.doc(path);
     log("$path $data");
-    await reference.set(data);
+    await reference.set(data, SetOptions(merge: true));
   }
 
   // One Time Request for a List of documents

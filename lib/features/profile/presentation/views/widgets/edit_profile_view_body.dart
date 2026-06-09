@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task06_travel_app_beg/core/services/edit_profile_services.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/profile_services.dart';
 import 'package:flutter_task06_travel_app_beg/core/utils/assets.dart';
 import 'package:flutter_task06_travel_app_beg/features/profile/presentation/views/widgets/edit_profile_form_fields.dart';
 import 'package:flutter_task06_travel_app_beg/features/profile/presentation/views/widgets/profile_card.dart';
+import 'package:go_router/go_router.dart';
 
 class EditProfileViewBody extends StatefulWidget {
   const EditProfileViewBody({super.key});
+
+  static VoidCallback? onSaveCallback;
 
   @override
   State<EditProfileViewBody> createState() => _EditProfileViewBodyState();
@@ -19,6 +23,29 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   TextEditingController locationController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
 
+  final editServices = EditProfileServicesImp();
+
+  @override
+  void initState() {
+    super.initState();
+
+    EditProfileViewBody.onSaveCallback = saveProfile;
+  }
+
+  Future<void> saveProfile() async {
+    if (_formKey.currentState!.validate()) {
+      await editServices.updateUserData(
+        firstName: firstNameController.text.trim(),
+        lastName: lastNameController.text.trim(),
+        location: locationController.text.trim(),
+        phoneNumber: phoneNumberController.text.trim(),
+      );
+
+      if (!mounted) return;
+      context.pop();
+    }
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -26,6 +53,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
     lastNameController.dispose();
     locationController.dispose();
     phoneNumberController.dispose();
+    EditProfileViewBody.onSaveCallback = null;
   }
 
   @override

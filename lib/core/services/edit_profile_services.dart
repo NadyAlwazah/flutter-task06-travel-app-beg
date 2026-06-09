@@ -1,0 +1,38 @@
+import 'package:flutter_task06_travel_app_beg/core/services/auth_services.dart';
+import 'package:flutter_task06_travel_app_beg/core/services/firestore_services.dart';
+import 'package:flutter_task06_travel_app_beg/core/utils/api_paths.dart';
+
+abstract class EditProfileServices {
+  Future<void> updateUserData({
+    required String firstName,
+    required String lastName,
+    required String location,
+    required String phoneNumber,
+  });
+}
+
+class EditProfileServicesImp implements EditProfileServices {
+  final firestoreServices = FirestoreServices.instance;
+  final authServices = AuthServicesImpl();
+
+  @override
+  Future<void> updateUserData({
+    required String firstName,
+    required String lastName,
+    String? location,
+    String? phoneNumber,
+  }) async {
+    final user = authServices.currentUser();
+
+    await firestoreServices.setData(
+      path: ApiPaths.user(user!.uid),
+      data: {
+        "firstName": firstName,
+        "lastName": lastName,
+        "fullName": "$firstName $lastName",
+        "location": location,
+        "phoneNumber": phoneNumber,
+      },
+    );
+  }
+}

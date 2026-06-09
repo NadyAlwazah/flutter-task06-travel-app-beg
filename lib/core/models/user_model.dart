@@ -35,9 +35,9 @@ class UserModel {
       fullName: map['fullName'] ?? '',
       firstName: map['firstName'] ?? '',
       lastName: map['lastName'] ?? '',
-      email: map['email'] as String,
-      location: map['location'],
-      phoneNumber: map['phoneNumber'],
+      email: map['email'] ?? "",
+      location: map['location'] ?? "",
+      phoneNumber: map['phoneNumber'] ?? '',
     );
   }
 }
