@@ -46,7 +46,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         if (action != null)
           Padding(
             padding: const EdgeInsets.only(right: 12.0),
-            child: InkWell(
+            child: GestureDetector(
               onTap: onTapAction,
               child: isActionIcon
                   ? Container(

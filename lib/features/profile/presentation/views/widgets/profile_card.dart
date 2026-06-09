@@ -20,7 +20,8 @@ class ProfileCard extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SvgPicture.asset(imagePath),
+        SvgPicture.asset(imagePath, width: 100, height: 100),
+        const SizedBox(height: 8),
         Text(
           name,
           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
