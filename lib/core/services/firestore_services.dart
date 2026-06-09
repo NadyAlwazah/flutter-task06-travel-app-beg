@@ -35,6 +35,15 @@ class FirestoreServices {
     return result;
   }
 
+  Future<T> getDocumnet<T>({
+    required String path,
+    required T Function(Map<String, dynamic> data, String documentId) builder,
+  }) async {
+    final reference = firestore.doc(path);
+    final snapshot = await reference.get();
+    return builder(snapshot.data() as Map<String, dynamic>, snapshot.id);
+  }
+
   Future<void> deleteData({required String path}) async {
     final reference = firestore.doc(path);
     log('delete: $path');
