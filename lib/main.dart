@@ -14,9 +14,6 @@ void main() async {
     publishableKey:
         'sb_publishable_BiclXkpzQkfrqtS7nt1-Kg_IKM4l6Zx', //! المفتاح العام للمشروع
     url: 'https://wufaopdrbmsmnpcnirhe.supabase.co',
-    // url: "https://wufaopdrbsmmnpcnihre.supabase.co", //! رابط مشروعك
-    // anonKey:
-    //     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1ZmFvcGRyYm1zbW5wY25pcmhlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMzg0OTUsImV4cCI6MjA5NjYxNDQ5NX0.ch31a_HjOnhWmHKHp1sSynFVVIZNeVfx3vUiB72o79s', //! المفتاح العام للمشروع
   );
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(

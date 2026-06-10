@@ -7,7 +7,7 @@ class PlaceModel {
   final double price;
   final bool isFavorite;
   final int joinedCount;
-  final String? dateRange;
+  final String dateRange;
   PlaceModel({
     required this.id,
     required this.imageUrl,
@@ -17,7 +17,7 @@ class PlaceModel {
     required this.price,
     this.isFavorite = false,
     this.joinedCount = 0,
-    this.dateRange,
+    required this.dateRange,
   });
   PlaceModel copyWith({
     String? id,

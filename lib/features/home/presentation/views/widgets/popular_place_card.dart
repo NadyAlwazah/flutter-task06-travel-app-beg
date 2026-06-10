@@ -35,9 +35,8 @@ class PopularPlaceCard extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(16)),
-                  child: Image.asset(
-                    "assets/images/Copilot_20260604_000453.png",
-                    //! placeModel.imageUrl,
+                  child: Image.network(
+                    placeModel.imageUrl,
                     height: widthScrren * 0.30,
                     width: widthScrren * 0.42,
                     fit: BoxFit.cover,

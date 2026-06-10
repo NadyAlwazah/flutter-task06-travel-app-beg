@@ -24,7 +24,7 @@ class ProfileServicesImp extends ProfileServices {
   @override
   Future<UserModel> fetchUserData() {
     final currentUser = authServices.currentUser();
-    final userData = firestoreServices.getDocumnet<UserModel>(
+    final userData = firestoreServices.getDocument<UserModel>(
       path: ApiPaths.user(currentUser!.uid),
       builder: (data, id) => UserModel.fromMap(data, id),
     );

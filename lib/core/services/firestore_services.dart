@@ -35,7 +35,7 @@ class FirestoreServices {
     return result;
   }
 
-  Future<T> getDocumnet<T>({
+  Future<T> getDocument<T>({
     required String path,
     required T Function(Map<String, dynamic> data, String documentId) builder,
   }) async {

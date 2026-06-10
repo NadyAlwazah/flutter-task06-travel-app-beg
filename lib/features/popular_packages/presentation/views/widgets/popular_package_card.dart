@@ -40,10 +40,11 @@ class PopularPackageCard extends StatelessWidget {
           // Image
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.asset(
+            child: Image.network(
               imagePath,
               height: widthScreen * 0.34,
               width: widthScreen * 0.25,
+
               fit: BoxFit.cover,
             ),
           ),

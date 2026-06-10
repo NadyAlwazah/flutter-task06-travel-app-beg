@@ -1,3 +1,4 @@
+import 'package:flutter_task06_travel_app_beg/core/models/place_model.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/firestore_services.dart';
 import 'package:flutter_task06_travel_app_beg/core/utils/api_paths.dart';
 
@@ -10,5 +11,29 @@ class PackagesServices {
       path: ApiPaths.packages(placeId),
       data: {"placeId": placeId},
     );
+  }
+
+  Future<List<PlaceModel>> getPopularPackages() async {
+    // جلب جميع الـ packages كـ List<Map<String, dynamic>>
+    final packages = await firestoreServices.getCollection(
+      path: ApiPaths.packages(),
+      builder: (data, documentId) => data, // نرجع الـ data فقط
+    );
+
+    List<PlaceModel> result = [];
+
+    for (var package in packages) {
+      final placeId = package["placeId"];
+
+      // جلب الـ place المرتبط بالـ package
+      final placeDoc = await firestoreServices.getDocument(
+        path: ApiPaths.places(placeId),
+        builder: (data, id) => PlaceModel.fromMap(id, data),
+      );
+
+      result.add(placeDoc);
+    }
+
+    return result;
   }
 }
