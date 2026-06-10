@@ -46,7 +46,7 @@ class EditProfileFormFields extends StatelessWidget {
         CustomTextFormFieldProfile(
           controller: locationController,
           textInputType: TextInputType.text,
-          validator: Validators.validateField,
+
           hintText: "Enter your location",
         ),
         const SizedBox(height: 16),

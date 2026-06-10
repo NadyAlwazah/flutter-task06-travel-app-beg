@@ -91,10 +91,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 16),
-                  const Center(
+                  Center(
                     child: ProfileCard(
-                      name: "N",
-                      // name: user.fullName,
+                      name: user.fullName,
                       subTitle: "Change Profile Picture",
                       isEmail: false,
                       imagePath: AssetsData.accountAvatarSvg1,

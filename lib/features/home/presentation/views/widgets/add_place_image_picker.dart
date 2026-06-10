@@ -1,9 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class AddPlaceImagePicker extends StatelessWidget {
   final VoidCallback onTap;
-
-  const AddPlaceImagePicker({super.key, required this.onTap});
+  final File? pickedImage;
+  const AddPlaceImagePicker({
+    super.key,
+    required this.onTap,
+    required this.pickedImage,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +22,22 @@ class AddPlaceImagePicker extends StatelessWidget {
           color: Colors.grey.shade200,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: Colors.grey.shade400),
+          image: pickedImage != null
+              ? DecorationImage(
+                  image: FileImage(pickedImage!),
+                  fit: BoxFit.cover,
+                )
+              : null,
         ),
-        child: const Center(
-          child: Text(
-            "Tap to upload image",
-            style: TextStyle(color: Colors.grey),
-          ),
-        ),
+
+        child: pickedImage == null
+            ? const Center(
+                child: Text(
+                  "Tap to upload image",
+                  style: TextStyle(color: Colors.grey),
+                ),
+              )
+            : null,
       ),
     );
   }

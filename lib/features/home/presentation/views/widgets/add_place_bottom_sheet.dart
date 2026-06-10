@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_task06_travel_app_beg/core/services/image_picker_services.dart';
 import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/manager/place_cubit/place_cubit.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/add_place_form_fields.dart';
@@ -18,21 +21,69 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
 
   TextEditingController titleController = TextEditingController();
   TextEditingController locationController = TextEditingController();
-  TextEditingController ratingdController = TextEditingController();
+  TextEditingController ratingController = TextEditingController();
   TextEditingController priceController = TextEditingController();
 
   @override
   void dispose() {
     titleController.dispose();
     locationController.dispose();
-    ratingdController.dispose();
+    ratingController.dispose();
     priceController.dispose();
     super.dispose();
   }
 
+  File? selectedImage;
+  final imageService = ImagePickerService.instance;
+  bool isUploading = false;
+
+  Future<void> _pickImage() async {
+    final img = await imageService.pickImageFromGallery();
+    if (img != null && mounted) {
+      setState(() => selectedImage = img);
+    }
+  }
+
+  Future<void> _submit(BuildContext context) async {
+    if (!_formKey.currentState!.validate()) return;
+
+    if (selectedImage == null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Please select an image")));
+      return;
+    }
+
+    setState(() => isUploading = true);
+
+    final imageUrl = await imageService.uploadImage(
+      imageFile: selectedImage!,
+      bucket: "places",
+    );
+
+    if (!mounted) return;
+
+    if (imageUrl == null) {
+      setState(() => isUploading = false);
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Image upload failed")));
+      return;
+    }
+
+    final cubit = context.read<PlaceCubit>();
+
+    await cubit.addPlace(
+      title: titleController.text.trim(),
+      imageUrl: imageUrl,
+      location: locationController.text.trim(),
+      rating: double.parse(ratingController.text),
+      price: double.parse(priceController.text),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<PlaceCubit>();
     final height = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.all(16),
@@ -52,14 +103,17 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
               const SizedBox(height: 16),
 
               // Image Picker
-              AddPlaceImagePicker(onTap: () {}),
+              AddPlaceImagePicker(
+                pickedImage: selectedImage,
+                onTap: _pickImage,
+              ),
 
               const SizedBox(height: 16),
 
               AddPlaceFormFields(
                 titleController: titleController,
                 locationController: locationController,
-                ratingController: ratingdController,
+                ratingController: ratingController,
                 priceController: priceController,
               ),
 
@@ -80,22 +134,11 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
                 buildWhen: (previous, current) =>
                     current is PlaceLoading || current is PlaceError,
                 builder: (context, state) {
-                  if (state is PlaceLoading) {
-                    return const CustomButton(isLoading: true);
-                  }
+                  final isLoading = state is PlaceLoading || isUploading;
                   return CustomButton(
+                    isLoading: isLoading,
                     text: "Add Place",
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        await cubit.addPlace(
-                          title: titleController.text,
-                          imageUrl: "",
-                          location: locationController.text,
-                          rating: double.parse(ratingdController.text),
-                          price: double.parse(priceController.text),
-                        );
-                      }
-                    },
+                    onPressed: isLoading ? null : () => _submit(context),
                   );
                 },
               ),
