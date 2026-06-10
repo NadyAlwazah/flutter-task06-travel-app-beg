@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/image_picker_services.dart';
+import 'package:flutter_task06_travel_app_beg/core/services/packages_services.dart';
 import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/manager/place_cubit/place_cubit.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/add_place_form_fields.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/add_place_image_picker.dart';
+import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/add_to_packages_switch.dart';
 import 'package:go_router/go_router.dart';
 
 class AddPlaceBottomSheet extends StatefulWidget {
@@ -23,6 +25,7 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
   TextEditingController locationController = TextEditingController();
   TextEditingController ratingController = TextEditingController();
   TextEditingController priceController = TextEditingController();
+  TextEditingController dateRangeController = TextEditingController();
 
   @override
   void dispose() {
@@ -30,12 +33,16 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
     locationController.dispose();
     ratingController.dispose();
     priceController.dispose();
+    dateRangeController.dispose();
+
     super.dispose();
   }
 
   File? selectedImage;
   final imageService = ImagePickerService.instance;
   bool isUploading = false;
+  final packagesServices = PackagesServices();
+  bool addToPackages = false;
 
   Future<void> _pickImage() async {
     final img = await imageService.pickImageFromGallery();
@@ -73,13 +80,18 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
 
     final cubit = context.read<PlaceCubit>();
 
-    await cubit.addPlace(
+    final placeId = await cubit.addPlace(
       title: titleController.text.trim(),
       imageUrl: imageUrl,
       location: locationController.text.trim(),
       rating: double.parse(ratingController.text),
       price: double.parse(priceController.text),
+      dateRange: dateRangeController.text,
     );
+
+    if (addToPackages && placeId != null) {
+      packagesServices.addPackage(placeId);
+    }
   }
 
   @override
@@ -115,9 +127,18 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
                 locationController: locationController,
                 ratingController: ratingController,
                 priceController: priceController,
+                dateRangeController: dateRangeController,
               ),
 
               const SizedBox(height: 12),
+              AddToPackagesSwitch(
+                value: addToPackages,
+                onChanged: (val) {
+                  setState(() {
+                    addToPackages = val;
+                  });
+                },
+              ),
 
               BlocConsumer<PlaceCubit, PlaceState>(
                 listenWhen: (previous, current) =>

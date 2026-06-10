@@ -1,12 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_task06_travel_app_beg/core/services/firestore_services.dart';
+import 'package:flutter_task06_travel_app_beg/core/utils/api_paths.dart';
 
 class PackagesServices {
-  final _firestore = FirebaseFirestore.instance;
+  final firestoreServices = FirestoreServices.instance;
 
   //! إضافة package جديد يحتوي فقط على placeId
   Future<void> addPackage(String placeId) async {
-    await _firestore.collection("packages").doc(placeId).set({
-      "placeId": placeId,
-    });
+    await firestoreServices.setData(
+      path: ApiPaths.packages(placeId),
+      data: {"placeId": placeId},
+    );
   }
 }

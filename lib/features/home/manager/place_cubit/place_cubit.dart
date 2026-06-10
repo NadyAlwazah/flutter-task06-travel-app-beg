@@ -13,12 +13,13 @@ class PlaceCubit extends Cubit<PlaceState> {
 
   final firestore = FirestoreServices.instance;
 
-  Future<void> addPlace({
+  Future<String?> addPlace({
     required String title,
     required String imageUrl,
     required String location,
     required double rating,
     required double price,
+    required String dateRange,
   }) async {
     emit(PlaceLoading());
 
@@ -33,6 +34,7 @@ class PlaceCubit extends Cubit<PlaceState> {
         location: location,
         rating: rating,
         price: price,
+        dateRange: dateRange,
       );
 
       await firestore.setData(
@@ -41,8 +43,10 @@ class PlaceCubit extends Cubit<PlaceState> {
       );
 
       emit(const PlaceAdded());
+      return id;
     } catch (e) {
       emit(PlaceError(message: e.toString()));
+      return null;
     }
   }
 }

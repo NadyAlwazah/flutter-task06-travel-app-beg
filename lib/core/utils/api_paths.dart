@@ -6,4 +6,6 @@ class ApiPaths {
   static String favoritePlace(String userId, String placeId) =>
       "users/$userId/favorites/$placeId";
   static String favoritePlaces(String userId) => "users/$userId/favorites/";
+
+  static String packages(String placeId) => "packages/$placeId";
 }

@@ -7,6 +7,7 @@ class AddPlaceFormFields extends StatelessWidget {
   final TextEditingController locationController;
   final TextEditingController ratingController;
   final TextEditingController priceController;
+  final TextEditingController dateRangeController;
 
   const AddPlaceFormFields({
     super.key,
@@ -14,6 +15,7 @@ class AddPlaceFormFields extends StatelessWidget {
     required this.locationController,
     required this.ratingController,
     required this.priceController,
+    required this.dateRangeController,
   });
 
   @override
@@ -39,6 +41,14 @@ class AddPlaceFormFields extends StatelessWidget {
           controller: ratingController,
           label: "Rating (1 - 5)",
           keyboardType: TextInputType.number,
+          validator: Validators.validateField,
+        ),
+        const SizedBox(height: 12),
+
+        CustomTextField(
+          controller: dateRangeController,
+          label: "Date Range",
+          keyboardType: TextInputType.text,
           validator: Validators.validateField,
         ),
         const SizedBox(height: 12),
