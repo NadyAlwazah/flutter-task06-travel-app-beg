@@ -63,7 +63,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   Widget build(BuildContext context) {
     final profileServices = ProfileServicesImp();
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16.0),
       child: SingleChildScrollView(
         child: FutureBuilder(
           future: profileServices.fetchUserData(),
