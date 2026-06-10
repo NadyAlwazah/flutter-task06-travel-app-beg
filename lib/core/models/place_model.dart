@@ -6,7 +6,8 @@ class PlaceModel {
   final double rating;
   final double price;
   final bool isFavorite;
-
+  final int joinedCount;
+  final String? dateRange;
   PlaceModel({
     required this.id,
     required this.imageUrl,
@@ -15,6 +16,8 @@ class PlaceModel {
     required this.rating,
     required this.price,
     this.isFavorite = false,
+    this.joinedCount = 0,
+    this.dateRange,
   });
   PlaceModel copyWith({
     String? id,
@@ -24,6 +27,8 @@ class PlaceModel {
     double? rating,
     double? price,
     bool? isFavorite,
+    int? joinedCount,
+    String? dateRange,
   }) {
     return PlaceModel(
       id: id ?? this.id,
@@ -33,17 +38,21 @@ class PlaceModel {
       rating: rating ?? this.rating,
       price: price ?? this.price,
       isFavorite: isFavorite ?? this.isFavorite,
+      joinedCount: joinedCount ?? this.joinedCount,
+      dateRange: dateRange ?? this.dateRange,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
+      "id": id,
       "imageUrl": imageUrl,
       'title': title,
       'location': location,
       'rating': rating,
       'price': price,
-      // "isFavorite": isFavorite,
+      "joinedCount": joinedCount,
+      "dateRange": dateRange,
     };
   }
 
@@ -55,7 +64,8 @@ class PlaceModel {
       location: map['location'] ?? '',
       rating: (map['rating'] as num).toDouble(),
       price: (map['price'] as num).toDouble(),
-      // isFavorite: map['isFavorite'],
+      joinedCount: map['joinedCount'] ?? 0,
+      dateRange: map['dateRange'] ?? "",
     );
   }
 }
