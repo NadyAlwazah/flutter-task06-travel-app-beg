@@ -33,6 +33,7 @@ class EditProfileServicesImp implements EditProfileServices {
         "fullName": "$firstName $lastName",
         "location": location,
         "phoneNumber": phoneNumber,
+        "email": email,
       },
     );
   }
