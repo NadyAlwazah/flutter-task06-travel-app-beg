@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/image_picker_services.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/packages_services.dart';
 import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
+import 'package:flutter_task06_travel_app_beg/core/widgets/custom_snack_bar.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/manager/place_cubit/place_cubit.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/add_place_form_fields.dart';
 import 'package:flutter_task06_travel_app_beg/features/home/presentation/views/widgets/add_place_image_picker.dart';
@@ -72,9 +73,10 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
 
     if (imageUrl == null) {
       setState(() => isUploading = false);
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Image upload failed")));
+      CustomSnackBar(message: "Image upload failed", isError: true);
+      // ScaffoldMessenger.of(
+      //   context,
+      // ).showSnackBar(const SnackBar(content: Text("Image upload failed")));
       return;
     }
 
@@ -91,6 +93,9 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
 
     if (addToPackages && placeId != null) {
       packagesServices.addPackage(placeId);
+      ScaffoldMessenger.of(context).showSnackBar(
+        CustomSnackBar(message: "Place added successfully", isError: false),
+      );
     }
   }
 
