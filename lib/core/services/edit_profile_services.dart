@@ -21,6 +21,7 @@ class EditProfileServicesImp implements EditProfileServices {
     required String lastName,
     String? location,
     String? phoneNumber,
+    String? email,
   }) async {
     final user = authServices.currentUser();
 

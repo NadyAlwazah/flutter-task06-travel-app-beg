@@ -22,6 +22,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   TextEditingController lastNameController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
   final editServices = EditProfileServicesImp();
 
@@ -39,6 +40,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
         lastName: lastNameController.text.trim(),
         location: locationController.text.trim(),
         phoneNumber: phoneNumberController.text.trim(),
+        email: emailController.text.trim(),
       );
 
       if (!mounted) return;
@@ -53,6 +55,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
     lastNameController.dispose();
     locationController.dispose();
     phoneNumberController.dispose();
+    emailController.dispose();
     EditProfileViewBody.onSaveCallback = null;
   }
 
@@ -84,6 +87,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
             lastNameController.text = user.lastName ?? '';
             locationController.text = user.location ?? '';
             phoneNumberController.text = user.phoneNumber ?? '';
+            emailController.text = user.email;
 
             return Form(
               key: _formKey,
@@ -106,6 +110,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     lastNameController: lastNameController,
                     locationController: locationController,
                     phoneNumberController: phoneNumberController,
+                    emailController: emailController,
                   ),
                 ],
               ),
