@@ -3,6 +3,10 @@ import 'package:flutter_task06_travel_app_beg/core/services/firestore_services.d
 import 'package:flutter_task06_travel_app_beg/core/utils/api_paths.dart';
 
 class PackagesServices {
+  // Singleton
+  PackagesServices._();
+  static final instance = PackagesServices._();
+
   final firestoreServices = FirestoreServices.instance;
 
   //! إضافة package جديد يحتوي فقط على placeId

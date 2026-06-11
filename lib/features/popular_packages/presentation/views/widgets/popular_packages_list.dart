@@ -11,7 +11,7 @@ class PopularPackagesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final packagesServices = PackagesServices();
+    final packagesServices = PackagesServices.instance;
 
     return FutureBuilder<List<PlaceModel>>(
       future: packagesServices.getPopularPackages(),

@@ -42,7 +42,8 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
   File? selectedImage;
   final imageService = ImagePickerService.instance;
   bool isUploading = false;
-  final packagesServices = PackagesServices();
+  final packagesServices = PackagesServices.instance;
+
   bool addToPackages = false;
 
   Future<void> _pickImage() async {
