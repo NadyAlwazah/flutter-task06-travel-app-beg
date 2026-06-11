@@ -25,7 +25,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
-  final editServices = EditProfileServicesImp();
+  final editProfileServices = EditProfileServicesImp.instance;
 
   @override
   void initState() {
@@ -36,7 +36,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
 
   Future<void> saveProfile() async {
     if (_formKey.currentState!.validate()) {
-      await editServices.updateUserData(
+      await editProfileServices.updateUserData(
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
         location: locationController.text.trim(),

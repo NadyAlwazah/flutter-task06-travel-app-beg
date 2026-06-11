@@ -12,6 +12,10 @@ abstract class EditProfileServices {
 }
 
 class EditProfileServicesImp implements EditProfileServices {
+  // Singleton
+  EditProfileServicesImp._();
+  static final instance = EditProfileServicesImp._();
+
   final firestoreServices = FirestoreServices.instance;
   final authServices = AuthServicesImpl();
 
