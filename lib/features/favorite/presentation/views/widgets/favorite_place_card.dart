@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_task06_travel_app_beg/core/models/place_model.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/favorite_services.dart';
-import 'package:flutter_task06_travel_app_beg/core/widgets/custom_snack_bar.dart';
 
 class FavoritePlaceCard extends StatelessWidget {
   final PlaceModel placeModel;
@@ -52,17 +51,8 @@ class FavoritePlaceCard extends StatelessWidget {
                   top: 8,
                   right: 8,
                   child: GestureDetector(
-                    onTap: () async {
-                      await favoriteServices.removeFavoritePlaceUser(
-                        placeModel.id,
-                      );
-                      if (!context.mounted) return;
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        CustomSnackBar(
-                          message: "Removed from favorites successfully",
-                        ),
-                      );
-                    },
+                    onTap: () async => await favoriteServices
+                        .removeFavoritePlaceUser(placeModel.id),
                     child: const CircleAvatar(
                       backgroundColor: Colors.black12,
                       radius: 14,
