@@ -14,7 +14,9 @@ class ProfileServicesImp extends ProfileServices {
   static final instance = ProfileServicesImp._();
 
   final firestoreServices = FirestoreServices.instance;
-  final authServices = AuthServicesImpl();
+
+  final authServices = AuthServicesImpl.instance;
+
   @override
   Stream<UserModel> fetchUserDataStream() {
     final currentUser = authServices.currentUser();

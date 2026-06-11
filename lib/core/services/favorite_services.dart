@@ -20,7 +20,8 @@ class FavoriteServicesImp implements FavoriteServices {
   static final instance = FavoriteServicesImp._();
   final firestoreServices = FirestoreServices.instance;
 
-  final authServices = AuthServicesImpl();
+  final authServices = AuthServicesImpl.instance;
+
   @override
   Future<void> addFavoritePlace({
     required String userId,

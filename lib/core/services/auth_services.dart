@@ -8,6 +8,10 @@ abstract class AuthServices {
 }
 
 class AuthServicesImpl implements AuthServices {
+  // Singleton
+  AuthServicesImpl._();
+  static final instance = AuthServicesImpl._();
+
   final _firebaseAuth = FirebaseAuth.instance;
   @override
   Future<bool> loginWithEmailAndPassword(String email, String password) async {

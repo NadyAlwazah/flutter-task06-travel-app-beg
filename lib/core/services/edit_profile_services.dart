@@ -17,7 +17,7 @@ class EditProfileServicesImp implements EditProfileServices {
   static final instance = EditProfileServicesImp._();
 
   final firestoreServices = FirestoreServices.instance;
-  final authServices = AuthServicesImpl();
+  final authServices = AuthServicesImpl.instance;
 
   @override
   Future<void> updateUserData({

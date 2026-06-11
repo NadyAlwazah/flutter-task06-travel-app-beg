@@ -14,7 +14,8 @@ class HomeServicesImpl implements HomeServices {
   // Singleton
   HomeServicesImpl._();
   static final instance = HomeServicesImpl._();
-  final authServices = AuthServicesImpl();
+  final authServices = AuthServicesImpl.instance;
+
   final favoriteServices = FavoriteServicesImp.instance;
 
   final firestoreServices = FirestoreServices.instance;

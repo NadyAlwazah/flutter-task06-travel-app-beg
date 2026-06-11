@@ -11,7 +11,8 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
-  final authServices = AuthServicesImpl();
+  final authServices = AuthServicesImpl.instance;
+
   final favoriteServices = FavoriteServicesImp.instance;
 
   Future<void> setFavorite(PlaceModel place) async {

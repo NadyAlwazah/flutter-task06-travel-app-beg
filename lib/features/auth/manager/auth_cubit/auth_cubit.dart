@@ -10,7 +10,7 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
-  final AuthServices authServices = AuthServicesImpl();
+  final authServices = AuthServicesImpl.instance;
 
   final firestoreServices = FirestoreServices.instance;
 
