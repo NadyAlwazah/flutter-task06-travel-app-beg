@@ -15,7 +15,8 @@ class HomeServicesImpl implements HomeServices {
   HomeServicesImpl._();
   static final instance = HomeServicesImpl._();
   final authServices = AuthServicesImpl();
-  final favoriteServices = FavoriteServicesImp();
+  final favoriteServices = FavoriteServicesImp.instance;
+
   final firestoreServices = FirestoreServices.instance;
 
   @override

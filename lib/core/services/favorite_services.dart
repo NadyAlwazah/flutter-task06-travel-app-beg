@@ -15,6 +15,9 @@ abstract class FavoriteServices {
 }
 
 class FavoriteServicesImp implements FavoriteServices {
+  // Singleton
+  FavoriteServicesImp._();
+  static final instance = FavoriteServicesImp._();
   final firestoreServices = FirestoreServices.instance;
 
   final authServices = AuthServicesImpl();

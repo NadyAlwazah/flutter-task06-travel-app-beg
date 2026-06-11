@@ -8,7 +8,8 @@ class FavoritePlacesGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoriteServices = FavoriteServicesImp();
+    final favoriteServices = FavoriteServicesImp.instance;
+
     return StreamBuilder(
       stream: favoriteServices.getFavoritesPlacesUserStream(),
       builder: (context, snapshot) {

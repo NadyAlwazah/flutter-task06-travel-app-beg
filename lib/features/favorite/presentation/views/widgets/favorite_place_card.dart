@@ -13,7 +13,8 @@ class FavoritePlaceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final widthScrren = MediaQuery.of(context).size.width;
-    final favoriteServices = FavoriteServicesImp();
+    final favoriteServices = FavoriteServicesImp.instance;
+
     return Container(
       width: widthScrren * 0.42,
       decoration: BoxDecoration(

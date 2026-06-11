@@ -12,7 +12,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
   final authServices = AuthServicesImpl();
-  final favoriteServices = FavoriteServicesImp();
+  final favoriteServices = FavoriteServicesImp.instance;
 
   Future<void> setFavorite(PlaceModel place) async {
     emit(SetFavoriteLoading());
