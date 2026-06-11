@@ -6,6 +6,7 @@ import 'package:flutter_task06_travel_app_beg/core/app/routes.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/profile_services.dart';
 import 'package:flutter_task06_travel_app_beg/core/utils/assets.dart';
 import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
+import 'package:flutter_task06_travel_app_beg/core/widgets/custom_snack_bar.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/manager/auth_cubit/auth_cubit.dart';
 import 'package:flutter_task06_travel_app_beg/features/profile/presentation/views/widgets/profile_card.dart';
 import 'package:flutter_task06_travel_app_beg/features/profile/presentation/views/widgets/settings_list.dart';
@@ -81,9 +82,9 @@ class ProfileViewBody extends StatelessWidget {
                     if (state is AuthSignedOut) {
                       context.go(AppRouter.kSignin);
                     } else if (state is AuthSignOutError) {
-                      ScaffoldMessenger.of(
-                        context,
-                      ).showSnackBar(SnackBar(content: Text(state.message)));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        CustomSnackBar(message: state.message, isError: true),
+                      );
                     }
                   },
                   buildWhen: (previous, current) => current is AuthSigningOut,

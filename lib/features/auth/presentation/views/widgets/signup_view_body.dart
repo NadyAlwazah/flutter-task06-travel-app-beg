@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_task06_travel_app_beg/core/app/routes.dart';
 import 'package:flutter_task06_travel_app_beg/core/utils/validators.dart';
 import 'package:flutter_task06_travel_app_beg/core/widgets/custom_button.dart';
+import 'package:flutter_task06_travel_app_beg/core/widgets/custom_snack_bar.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/manager/auth_cubit/auth_cubit.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/auth_header.dart';
 import 'package:flutter_task06_travel_app_beg/features/auth/presentation/views/widgets/custom_text_form_field.dart';
@@ -91,9 +92,9 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                     //!
                     context.go(AppRouter.kBottomBar);
                   } else if (state is AuthError) {
-                    ScaffoldMessenger.of(
-                      context,
-                    ).showSnackBar(SnackBar(content: Text(state.message)));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      CustomSnackBar(message: state.message, isError: true),
+                    );
                   }
                 },
                 buildWhen: (previous, current) =>

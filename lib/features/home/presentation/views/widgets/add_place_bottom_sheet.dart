@@ -56,9 +56,10 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
     if (!_formKey.currentState!.validate()) return;
 
     if (selectedImage == null) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Please select an image")));
+      ScaffoldMessenger.of(context).showSnackBar(
+        CustomSnackBar(message: "Please select an image", isError: true),
+      );
+      context.pop();
       return;
     }
 
@@ -69,14 +70,15 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
       bucket: "places",
     );
 
-    if (!mounted) return;
+    if (!context.mounted) return;
 
     if (imageUrl == null) {
       setState(() => isUploading = false);
-      CustomSnackBar(message: "Image upload failed", isError: true);
-      // ScaffoldMessenger.of(
-      //   context,
-      // ).showSnackBar(const SnackBar(content: Text("Image upload failed")));
+      ScaffoldMessenger.of(context).showSnackBar(
+        CustomSnackBar(message: "Image upload failed", isError: true),
+      );
+      context.pop();
+
       return;
     }
 
@@ -92,10 +94,11 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
     );
 
     if (addToPackages && placeId != null) {
+      if (!context.mounted) return;
       packagesServices.addPackage(placeId);
-      ScaffoldMessenger.of(context).showSnackBar(
-        CustomSnackBar(message: "Place added successfully", isError: false),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(CustomSnackBar(message: "Place added successfully"));
     }
   }
 
@@ -152,9 +155,9 @@ class _AddPlaceBottomSheetState extends State<AddPlaceBottomSheet> {
                   if (state is PlaceAdded) {
                     context.pop();
                   } else if (state is PlaceError) {
-                    ScaffoldMessenger.of(
-                      context,
-                    ).showSnackBar(SnackBar(content: Text(state.message)));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      CustomSnackBar(message: state.message, isError: true),
+                    );
                   }
                 },
                 buildWhen: (previous, current) =>
