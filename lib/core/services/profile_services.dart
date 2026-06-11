@@ -9,6 +9,10 @@ abstract class ProfileServices {
 }
 
 class ProfileServicesImp extends ProfileServices {
+  // Singleton
+  ProfileServicesImp._();
+  static final instance = ProfileServicesImp._();
+
   final firestoreServices = FirestoreServices.instance;
   final authServices = AuthServicesImpl();
   @override

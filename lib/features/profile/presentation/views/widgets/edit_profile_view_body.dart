@@ -65,7 +65,8 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    final profileServices = ProfileServicesImp();
+    final profileServices = ProfileServicesImp.instance;
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16.0),
       child: SingleChildScrollView(

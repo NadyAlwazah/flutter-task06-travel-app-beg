@@ -19,7 +19,8 @@ class ProfileViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<AuthCubit>();
-    final profileServices = ProfileServicesImp();
+    final profileServices = ProfileServicesImp.instance;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: SingleChildScrollView(
