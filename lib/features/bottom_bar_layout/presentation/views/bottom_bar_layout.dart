@@ -72,7 +72,7 @@ class _BottomBarLayoutState extends State<BottomBarLayout> {
           SalomonBottomBarItem(
             icon: const Icon(Icons.trending_up),
             title: const Text("Popular"),
-            selectedColor: Color(0xFFFFB300),
+            selectedColor: const Color(0xFFFFB300),
           ),
 
           /// Favorite

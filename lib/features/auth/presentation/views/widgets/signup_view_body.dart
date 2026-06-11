@@ -89,7 +89,6 @@ class _SignupViewBodyState extends State<SignupViewBody> {
 
                 listener: (context, state) {
                   if (state is AuthLoaded) {
-                    //!
                     context.go(AppRouter.kBottomBar);
                   } else if (state is AuthError) {
                     ScaffoldMessenger.of(context).showSnackBar(

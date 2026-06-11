@@ -1,10 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_task06_travel_app_beg/core/theme/app_colors.dart';
 import 'package:flutter_task06_travel_app_beg/core/utils/assets.dart';
 
 class PopularPackageCard extends StatelessWidget {
-  final String imagePath;
+  final String imageUrl;
   final String title;
   final String dateRange;
   final double rating;
@@ -13,7 +15,7 @@ class PopularPackageCard extends StatelessWidget {
 
   const PopularPackageCard({
     super.key,
-    required this.imagePath,
+    required this.imageUrl,
     required this.title,
     required this.dateRange,
     required this.rating,
@@ -40,12 +42,16 @@ class PopularPackageCard extends StatelessWidget {
           // Image
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.network(
-              imagePath,
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
               height: widthScreen * 0.34,
               width: widthScreen * 0.25,
-
               fit: BoxFit.cover,
+              placeholder: (context, url) => const Center(
+                child: CupertinoActivityIndicator(color: Color(0xFFFFB300)),
+              ),
+              errorWidget: (context, url, error) =>
+                  const Center(child: Icon(Icons.error)),
             ),
           ),
           const SizedBox(width: 12),

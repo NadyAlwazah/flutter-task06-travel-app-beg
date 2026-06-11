@@ -48,7 +48,7 @@ class PopularPackagesList extends StatelessWidget {
           itemBuilder: (context, index) {
             final place = packages[index];
             return PopularPackageCard(
-              imagePath: place.imageUrl,
+              imageUrl: place.imageUrl,
               title: place.title,
               dateRange: place.dateRange,
               rating: place.rating,

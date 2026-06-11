@@ -13,7 +13,7 @@ class FavoritePlacesGrid extends StatelessWidget {
       stream: favoriteServices.getFavoritesPlacesUserStream(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return const Text('Something went wrong');
+          return const Center(child: Text('Something went wrong'));
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {

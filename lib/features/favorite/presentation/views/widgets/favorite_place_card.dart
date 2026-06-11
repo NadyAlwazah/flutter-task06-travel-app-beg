@@ -1,6 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_task06_travel_app_beg/core/models/place_model.dart';
 import 'package:flutter_task06_travel_app_beg/core/services/favorite_services.dart';
+import 'package:flutter_task06_travel_app_beg/core/widgets/custom_snack_bar.dart';
 
 class FavoritePlaceCard extends StatelessWidget {
   final PlaceModel placeModel;
@@ -32,11 +35,16 @@ class FavoritePlaceCard extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(16)),
-                  child: Image.network(
-                    placeModel.imageUrl,
+                  child: CachedNetworkImage(
+                    imageUrl: placeModel.imageUrl,
                     height: widthScrren * 0.30,
                     width: widthScrren * 0.42,
                     fit: BoxFit.cover,
+                    placeholder: (context, url) => const Center(
+                      child: CupertinoActivityIndicator(color: Colors.red),
+                    ),
+                    errorWidget: (context, url, error) =>
+                        const Center(child: Icon(Icons.error)),
                   ),
                 ),
                 Positioned(
@@ -46,6 +54,12 @@ class FavoritePlaceCard extends StatelessWidget {
                     onTap: () async {
                       await favoriteServices.removeFavoritePlaceUser(
                         placeModel.id,
+                      );
+                      if (!context.mounted) return;
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        CustomSnackBar(
+                          message: "Removed from favorites successfully",
+                        ),
                       );
                     },
                     child: const CircleAvatar(

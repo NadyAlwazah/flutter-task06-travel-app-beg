@@ -14,10 +14,10 @@ class PackagesServices {
   }
 
   Future<List<PlaceModel>> getPopularPackages() async {
-    // جلب جميع الـ packages كـ List<Map<String, dynamic>>
+    // جلب جميع الـ packages
     final packages = await firestoreServices.getCollection(
       path: ApiPaths.packages(),
-      builder: (data, documentId) => data, // نرجع الـ data فقط
+      builder: (data, documentId) => data,
     );
 
     List<PlaceModel> result = [];
