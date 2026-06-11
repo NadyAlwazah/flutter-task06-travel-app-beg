@@ -9,7 +9,8 @@ class PopularPlacesGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeServices = HomeServicesImpl();
+    final homeServices = HomeServicesImpl.instance;
+
     return StreamBuilder<List<PlaceModel>>(
       stream: homeServices.getPlacesStream(),
       builder: (context, snapshot) {

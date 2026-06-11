@@ -11,6 +11,9 @@ abstract class HomeServices {
 }
 
 class HomeServicesImpl implements HomeServices {
+  // Singleton
+  HomeServicesImpl._();
+  static final instance = HomeServicesImpl._();
   final authServices = AuthServicesImpl();
   final favoriteServices = FavoriteServicesImp();
   final firestoreServices = FirestoreServices.instance;
