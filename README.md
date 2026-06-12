@@ -164,12 +164,21 @@ lib/
 
 ---
 
-## 📸 Screenshots (Optional)
+## 📸 Screenshots 
 
 
 | Splash | Sign In | Sign Up | Home | Sheet | Packages | Favorites | Profile | Edit Profile |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| <img src="screenshots/splash.jpg" width="300"> | <img src="screenshots/sign_in.jpg" width="300">  | <img src="screenshots/sign_up.jpg" width="300">  | <img src="screenshots/home.jpg width="300"> | <img src="screenshots/sheet.jpg width="300"> | <img src="screenshots/packages.jpg width="300"> | <img src="screenshots/favorite.jpg width="300"> | <img src="screenshots/profile.jpg width="300"> | <img src="screenshots/edit_Profile.jpg width="300"> |
+| <img src="screenshots/splash.jpg" width="250" height="500"> |
+<img src="screenshots/sign_in.jpg" width="250" height="500"> |
+<img src="screenshots/sign_up.jpg" width="250" height="500"> |
+<img src="screenshots/home.jpg" width="250" height="500"> |
+<img src="screenshots/sheet.jpg" width="250" height="500"> |
+<img src="screenshots/packages.jpg" width="250" height="500"> |
+<img src="screenshots/favorite.jpg" width="250" height="500"> |
+<img src="screenshots/profile.jpg" width="250" height="500"> |
+<img src="screenshots/edit_Profile.jpg" width="250" height="500"> |
+
 
 
 
