@@ -166,11 +166,10 @@ lib/
 
 ## 📸 Screenshots (Optional)
 
-> Add your screenshots inside a `screenshots/` folder.
 
 | Splash | Sign In | Sign Up | Home | Sheet | Packages | Favorites | Profile | Edit Profile |
-| --- | --- | --- | --- |
-| img1 | img2 | img3 | img4 | img5 | img6 | img7 | img8 | img9 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| <img src="screenshots/splash.jpg" width="300"> | <img src="screenshots/sign_in.jpg" width="300">  | <img src="screenshots/sign_up.jpg" width="300">  | <img src="screenshots/home.jpg width="300"> | <img src="screenshots/sheet.jpg width="300"> | <img src="screenshots/packages.jpg width="300"> | <img src="screenshots/favorite.jpg width="300"> | <img src="screenshots/profile.jpg width="300"> | <img src="screenshots/edit_Profile.jpg width="300"> |
 
 
 
