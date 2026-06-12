@@ -137,32 +137,30 @@ Favorite Places must be **user‑specific**, filtered by the authenticated user�
 
 ---
 
-## 📁 Project Structure (Simplified)
+## 📁 Project Structure
 
-lib/
-├── core/
-│   ├── app/
-│   ├── models/
-│   ├── services/
-│   ├── theme/
-│   ├── utils/
-│   └── widgets/
+```text
+lib
+├── 📂 core
+│   ├── 📁 app
+│   ├── 📁 models
+│   ├── 📁 services
+│   ├── 🎨 theme
+│   ├── 🧰 utils
+│   └── 🧩 widgets
 │
-├── features/
-│   ├── auth/
-│   ├── borrom_bar_layout/
-│   ├── home/
-│   ├── favorite/
-│   ├── profile/
-│   ├── popular_packages/
-│   └── splash/
+├── 📂 features
+│   ├── 🔐 auth
+│   ├── 📱 borrom_bar_layout
+│   ├── 🏠 home
+│   ├── ⭐ favorite
+│   ├── 👤 profile
+│   ├── 📦 popular_packages
+│   └── 🚀 splash
 │
-├── firebase_options.dart
-└── main.dart
-
-
-
----
+├── 📄 firebase_options.dart
+└── 📄 main.dart
+```
 
 ## 📸 Screenshots 
 
