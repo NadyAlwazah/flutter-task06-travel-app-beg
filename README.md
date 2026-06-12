@@ -1,17 +1,188 @@
-# flutter_task06_travel_app_beg
+# 🌍 Travel App – Flutter + Firebase
 
-A new Flutter project.
+A complete Travel App built with **Flutter**, connected to **Firebase Authentication** and **Cloud Firestore**, featuring real‑time updates, favorites system, profile editing, and responsive UI.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🎯 Objective
 
-A few resources to get you started if this is your first Flutter project:
+Build the core features of a Travel App connected to Firebase (Auth & Firestore).  
+The app includes responsive UIs, real-time data fetching, and a fully connected user session across multiple screens.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🧩 Core Features
+
+### 1️⃣ Splash Screen  
+A simple splash screen shown before navigating to the authentication flow.
+
+---
+
+### 2️⃣ Authentication Flow
+
+**Screens:**
+- Sign In  
+- Sign Up  
+
+**UI Requirements:**
+- Form validation (Email + Password)
+- Password must be **at least 8 characters**
+- Password visibility toggle
+- Scrollable layout to avoid overflow when keyboard opens
+
+**Firebase Integration:**
+- Login & Register using **FirebaseAuth**
+- On successful Sign Up → create a user document in `users` collection
+
+---
+
+### 3️⃣ App Navigation & Home Screen
+
+**Features:**
+- Persistent **Bottom Navigation Bar**
+- Screens:
+  - Home (All Popular Places)
+  - Popular Packages
+  - Favorite Places
+  - Profile
+
+**Floating Action Button (FAB):**
+- Opens a dialog/sheet to add a new place  
+- Each place card displays:
+  - Image
+  - Title
+  - Location (pin icon)
+  - Rating stars
+  - Price per person
+  - Heart toggle icon
+
+---
+
+### 4️⃣ Popular Packages & Favorite Places
+
+**Popular Packages Screen:**
+- Vertical list showing:
+  - Price
+  - Rating
+  - Date
+
+**Favorite Places Screen:**
+- Two‑column grid layout
+- Active heart icon
+
+**Firebase Integration:**
+- Fetch data from:
+  - `places` collection  
+  - `packages` collection  
+- Using **streams** or **future fetching**
+
+**Important:**  
+Favorite Places must be **user‑specific**, filtered by the authenticated user’s UID.
+
+---
+
+### 5️⃣ Profile Management & Live Update
+
+**Screens:**
+- Profile  
+- Edit Profile  
+
+**Features:**
+- Live streaming of user data  
+- Edit profile updates Firestore instantly  
+- Sign Out button:
+  - Logs out user
+  - Clears session
+  - Redirects to Sign In screen
+
+---
+
+### 6️⃣ Dynamic Favorite Toggle
+
+- Heart icon works across all screens  
+- Adds/removes place from user’s favorites in real‑time  
+- Uses Firestore collections:
+  - `favoritePlaces/{userId}/{placeId}`
+
+---
+
+### 7️⃣ Images
+
+- All images are stored and fetched from Firestore/Storage  
+- Displayed dynamically inside the UI
+
+---
+
+## 🛠️ Tech Stack
+
+- **Flutter**
+- **Firebase Authentication**
+- **Cloud Firestore**
+- **StreamBuilder**
+- **Responsive UI**
+- **Singleton Services Architecture**
+
+---
+
+## 🚀 How to Run
+
+1. Clone the repository  
+2. Run:
+    flutter pub get
+3. Add Firebase configuration files:
+   - `google-services.json` (Android)
+   - `GoogleService-Info.plist` (iOS)
+4. Run the app:
+    flutter run
+
+---
+
+## 📁 Project Structure (Simplified)
+
+lib/
+├── core/
+│   ├── app/
+│   ├── models/
+│   ├── services/
+│   ├── theme/
+│   ├── utils/
+│   └── widgets/
+│
+├── features/
+│   ├── auth/
+│   ├── borrom_bar_layout/
+│   ├── home/
+│   ├── favorite/
+│   ├── profile/
+│   ├── popular_packages/
+│   └── splash/
+│
+├── firebase_options.dart
+└── main.dart
+
+
+
+---
+
+## 📸 Screenshots (Optional)
+
+> Add your screenshots inside a `screenshots/` folder.
+
+| Splash | Sign In | Sign Up | Home | Sheet | Packages | Favorites | Profile | Edit Profile |
+| --- | --- | --- | --- |
+| img1 | img2 | img3 | img4 | img5 | img6 | img7 | img8 | img9 |
+
+
+
+
+
+---
+
+## 📌 Notes
+
+This project was built as part of a training task to implement a complete Travel App with Firebase integration, real-time updates, and clean architecture.
+
+---
+
+## 📝 License  
+(Optional – you can add MIT or Apache license)

@@ -42,8 +42,6 @@ class PopularPackagesList extends StatelessWidget {
 
         return ListView.separated(
           separatorBuilder: (_, __) => const SizedBox(height: 8),
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
           itemCount: packages.length,
           itemBuilder: (context, index) {
             final place = packages[index];

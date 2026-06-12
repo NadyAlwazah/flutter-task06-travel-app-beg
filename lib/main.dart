@@ -11,8 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Supabase.initialize(
-    publishableKey:
-        'sb_publishable_BiclXkpzQkfrqtS7nt1-Kg_IKM4l6Zx', //! المفتاح العام للمشروع
+    publishableKey: 'sb_publishable_BiclXkpzQkfrqtS7nt1-Kg_IKM4l6Zx',
     url: 'https://wufaopdrbmsmnpcnirhe.supabase.co',
   );
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
