@@ -112,15 +112,26 @@ Favorite Places must be **user‑specific**, filtered by the authenticated user�
 - Displayed dynamically inside the UI
 
 ---
-
 ## 🛠️ Tech Stack
 
+### 📦 Framework
 - **Flutter**
+
+### 🔥 Backend
 - **Firebase Authentication**
 - **Cloud Firestore**
-- **StreamBuilder**
-- **Responsive UI**
+
+### 🧠 State Management & Architecture
+- **Cubit (Bloc)**
 - **Singleton Services Architecture**
+
+### 🧵 Async & Data Handling
+- **FutureBuilder**
+- **StreamBuilder**
+
+### 🎨 UI & UX
+- **Responsive UI**
+
 
 ---
 
@@ -183,5 +194,3 @@ This project was built as part of a training task to implement a complete Travel
 
 ---
 
-## 📝 License  
-(Optional – you can add MIT or Apache license)
