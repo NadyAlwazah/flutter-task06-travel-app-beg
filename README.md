@@ -102,14 +102,8 @@ Favorite Places must be **user‑specific**, filtered by the authenticated user�
 - Heart icon works across all screens  
 - Adds/removes place from user’s favorites in real‑time  
 - Uses Firestore collections:
-  - `favoritePlaces/{userId}/{placeId}`
+  - `users/{userId}/favorites/{placeId}`
 
----
-
-### 7️⃣ Images
-
-- All images are stored and fetched from Firestore/Storage  
-- Displayed dynamically inside the UI
 
 ---
 ## 🛠️ Tech Stack
@@ -122,7 +116,7 @@ Favorite Places must be **user‑specific**, filtered by the authenticated user�
 - **Cloud Firestore**
 
 ### 🧠 State Management & Architecture
-- **Cubit (Bloc)**
+- **Cubit**
 - **Singleton Services Architecture**
 
 ### 🧵 Async & Data Handling
@@ -135,18 +129,6 @@ Favorite Places must be **user‑specific**, filtered by the authenticated user�
 
 ---
 
-## 🚀 How to Run
-
-1. Clone the repository  
-2. Run:
-    flutter pub get
-3. Add Firebase configuration files:
-   - `google-services.json` (Android)
-   - `GoogleService-Info.plist` (iOS)
-4. Run the app:
-    flutter run
-
----
 
 ## 📁 Project Structure
 
@@ -184,8 +166,6 @@ lib
 
 
 
-
-
 ---
 
 ## 📌 Notes
@@ -194,3 +174,6 @@ This project was built as part of a training task to implement a complete Travel
 
 ---
 
+## 👨‍💻 Developer
+**Nady Alwazah**  
+Flutter Developer – Skills Academy Training Program  
