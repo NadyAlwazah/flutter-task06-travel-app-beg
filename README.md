@@ -114,6 +114,7 @@ Favorite Places must be **user‑specific**, filtered by the authenticated user�
 ### 🔥 Backend
 - **Firebase Authentication**
 - **Cloud Firestore**
+- **Supabase Storage** – used to upload and store place images
 
 ### 🧠 State Management & Architecture
 - **Cubit**
@@ -171,6 +172,7 @@ lib
 ## 📌 Notes
 
 This project was built as part of a training task to implement a complete Travel App with Firebase integration, real-time updates, and clean architecture.
+This project uses **Supabase Storage** to upload and host images for places.
 
 ---
 
